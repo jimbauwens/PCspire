@@ -3,9 +3,9 @@
 1. Install Love (love2d.org)
 
 2. Create this directory:
- *Windows: %appdata%\Love\.pcspire
- *Linux  : ~/.local/share/love/.pcspire
- *Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
+ * Windows: %appdata%\Love\.pcspire
+ * Linux  : ~/.local/share/love/.pcspire
+ * Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
 
 3. Create another directory in there named "scripts" and place the scripts you want to run
 
