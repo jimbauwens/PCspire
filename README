@@ -1,14 +1,13 @@
-How to use:
+##How to use:
 
-- Install Love (love2d.org)
-- Create this directory:
-Windows: %appdata%\Love\.pcspire
-Linux  : ~/.local/share/love/.pcspire
-Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
+1. Install Love (love2d.org)
+2. Create this directory:
+ *Windows: %appdata%\Love\.pcspire
+ *Linux  : ~/.local/share/love/.pcspire
+ *Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
 
-- Create another directory in there named "scripts" and place the scripts you
- want to run
-- Then run "love path/to/the/dir/containing/this/readme"
+2. Create another directory in there named "scripts" and place the scripts you want to run
+3. Then run "love path/to/the/dir/containing/this/readme"
 
 You should see a window with a list of all the scripts you put in the .pcspire/scripts folder. Press enter to run it.
 I know this is a bit complex, but it will become more easy in the future :) 
