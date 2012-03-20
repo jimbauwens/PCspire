@@ -6,7 +6,7 @@ Windows: %appdata%\Love\.pcspire
 Linux  : ~/.local/share/love/.pcspire
 Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
 
-- Create another directory in there names "scripts" and place the scripts you
+- Create another directory in there named "scripts" and place the scripts you
  want to run
 - Then run "love path/to/the/dir/containing/this/readme"
 
