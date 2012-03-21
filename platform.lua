@@ -31,6 +31,7 @@ function Window:init(w, h)
 	
 	self.invalidated	= false
 	self.invaliddata	= 0
+	self:update()
 end
 
 
@@ -68,6 +69,21 @@ function Window:width()
 	return self.w
 end
 
+function Window:update()
+	PCspire.callEvent(on.resize, self.w, self.h)
+end
+
+function Window:setHeight(h)
+	self.h	= h>0 and h or error("Specified window height is smaller or equal to 0! Are you crazy?")
+	PCspire.callEvent(on.resize, self.w, self.h)
+end
+
+function Window:setWidth(w)
+	self.w	= w>0 and w or error("Specified window width is smaller or equal to 0! Are you crazy?")
+	PCspire.callEvent(on.resize, self.w, self.h)
+end
+
+
 -----------------------------
 -- Graphical Context Class --
 -----------------------------
@@ -91,16 +107,16 @@ function platform.gc:default()
 	fonts.setFont(12)
 end
 
-platform.gc["end"]	= function (self)
+platform.gc["finish"]	= function (self)
 	--love.graphics.setRenderTarget(globalGC.framebuffer)
 end
 
 
 platform.gc.offsets	= {}
-platform.gc.offsets["top"     ]	= function () return 4 end
-platform.gc.offsets["bottom"  ]	= function () return -platform.gc.font[4]+8 end
+platform.gc.offsets["top"     ]	= function () return 0 end
+platform.gc.offsets["bottom"  ]	= function () return -platform.gc.font[4] end
 platform.gc.offsets["middle"  ]	= function () return -platform.gc.font[4]/2 end
-platform.gc.offsets["baseline"]	= function () return -platform.gc.font[4] end
+platform.gc.offsets["baseline"]	= function () return -platform.gc.font[4]+4 end
 
 platform.gc.font	=	{"", "r", 1, 12}
 
@@ -180,7 +196,7 @@ function platform.gc:setColorRGB(r, g, b)
 end
 
 function platform.gc:getStringWidth(str)
-	return 0.6*self.font[4]*#str
+	return 0.6*self.font[4]*#tostring(str)
 end
 
 function platform.gc:getStringHeight(str)

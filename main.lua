@@ -16,7 +16,7 @@ end
 -- Load the libraries
 function PCspire.loadLibs()
 	-- Names of libs to load
-	local libs	= {'bindings.lua','tools.lua','platform.lua','timer.lua','locale.lua','var.lua','fonts.lua','image.lua','key.lua','mouse.lua','debug.lua','fileloader.lua'}
+	local libs	= {'unimplemented.lua','bindings.lua','tools.lua','platform.lua','timer.lua','locale.lua','var.lua','fonts.lua','image.lua','key.lua','mouse.lua','debug.lua','fileloader.lua'}
 	local ok,chunk
 	for _, lib in ipairs(libs) do
 		ok, chunk = PCspire.loadFile(lib)
@@ -80,6 +80,8 @@ function PCspire.init()
 	if not platform.window then
 		PCspire.debuginfo("Creating Window object")
 		platform.window	= Window(PCspire.getWidth(), PCspire.getHeight())
+	else
+		platform.window:update()
 	end
 	
 	-- Call on.create and on.paint for the first time
