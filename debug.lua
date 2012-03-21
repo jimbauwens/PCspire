@@ -190,7 +190,7 @@ function dotty ()
             LUA_QL("print"), msg))
       end
     end
-    if not _CONTINUE then break end
+    if not PCspire.CONTINUE then break end
   end
   io_stdout:write"\n"
   io_stdout:flush()
