@@ -13,7 +13,7 @@ function platform.isColorDisplay()
 end
 
 function platform.isDeviceModeRendering()
-	return false
+	return true
 end
 
 ------------------
@@ -155,14 +155,28 @@ function platform.gc:drawPolyLine(vertices)
 	end
 end
 
-function platform.gc:drawArc(x, y, w, h, s_angle, e_angle)
-	local r	= (w+h)/4
-	love.graphics.circle("line", x+r, y+r, r, 360)
+function platform.gc:drawArc(x, y, w, h, startangle, angle, style)
+	w,h=w/2,h/2
+	startangle=startangle+90
+	points	= {}
+	local cos,sin=math.cos,math.sin
+	for i=startangle, startangle+angle do
+		local a=math.rad(i)
+		table.insert(points, sin(a)*w + w + x)
+		table.insert(points, cos(a)*h + h + y)
+		
+	end
+	if style == "fill" then
+		table.insert(points, x+w)
+		table.insert(points, y+h)
+		love.graphics.polygon("fill",unpack(points))
+	else
+		love.graphics.line(unpack(points))
+	end
 end
 
-function platform.gc:fillArc(x, y, w, h, s_angle, e_angle)
-	local r	= (w+h)/4
-	love.graphics.circle("fill", x+r, y+r, r, 360)
+function platform.gc:fillArc(x, y, w, h, startangle, angle)
+	self:drawArc(x, y, w, h, startangle, angle, "fill")
 end
 
 function platform.gc:drawLine(x1, y1, x2, y2)
@@ -207,6 +221,7 @@ function platform.gc:setAlpha() end
 
 function platform.gc:drawImage(img, x, y)
 	love.graphics.setColorMode("replace")
+	love.graphics.setColor(0,0,0,255)
 	love.graphics.draw(img.framebuffer, x, y)
 	love.graphics.setColorMode("modulate")
 end
