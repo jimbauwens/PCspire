@@ -3,7 +3,7 @@
 1. Install Love (love2d.org)
 
 2. Create this directory:
- * Windows: %appdata%\Love\.pcspire
+ * Windows: %appdata%/Love/.pcspire
  * Linux  : ~/.local/share/love/.pcspire
  * Mac    : /Users/user/Library/Application Support/LOVE/.pcspire
 
