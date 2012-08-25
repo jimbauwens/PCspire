@@ -69,3 +69,8 @@ function string:split(pattern)
 	end
 	return list
 end
+
+
+function math.round(n)
+	return math.floor(n+.5)
+end

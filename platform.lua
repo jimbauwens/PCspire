@@ -16,6 +16,7 @@ function platform.isDeviceModeRendering()
 	return true
 end
 
+
 ------------------
 -- Window Class --
 ------------------
@@ -160,8 +161,13 @@ function platform.gc:drawArc(x, y, w, h, startangle, angle, style)
 	startangle=startangle+90
 	points	= {}
 	local cos,sin=math.cos,math.sin
-	for i=startangle, startangle+angle do
-		local a=math.rad(i)
+	local d= math.round(math.max((w+h)/2, 10))
+	if style == "fill" then
+		table.insert(points, x+w)
+		table.insert(points, y+h)
+	end
+	for i=0, d do
+		local a=math.rad(startangle+angle*(i/d))
 		table.insert(points, sin(a)*w + w + x)
 		table.insert(points, cos(a)*h + h + y)
 		
